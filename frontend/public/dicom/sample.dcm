@@ -1,0 +1,17 @@
+<!doctype html><html lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/><meta http-equiv="Pragma" content="no-cache"/><meta http-equiv="Expires" content="0"/><title id="doc-title"></title><link id="style" rel="stylesheet"><link id="quill-style" rel="stylesheet"><link rel="icon" href="favicon.ico"><!--[if lte IE 9]>
+	<script type="text/javascript">
+		document.getElementById('wrapper').textContent = 'Internet Explorer is not supported.'
+	</script>
+	<![endif] --><script defer="defer" src="js/md.main.min.eb80ee2db91c.js"></script></head><body style="background-color: #2F2F33; width: 100%; height: 100%"><div id="unsupported-browser-msg" style="color: white; background-color: red; display: none;">Internet Explorer is not supported.</div><div id="wrapper"><div class="block-loader"></div></div><script>function isIE() {
+			var ua = window.navigator.userAgent;
+			var msie = ua.indexOf('MSIE ');
+			var trident = ua.indexOf('Trident/');
+
+			return (msie > 0 || trident > 0);
+		}
+		if (isIE()) {
+			var insertPoint = document.getElementById("unsupported-browser-msg");
+			if (insertPoint) {
+				insertPoint.style.display = "block";
+			}
+		}</script></body></html>
