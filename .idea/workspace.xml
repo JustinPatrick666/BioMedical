@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fbfae57-25a2-4aae-97cf-8bc4cae55101" name="更改" comment="4.11之前的工作">
-      <change afterPath="$PROJECT_DIR$/backend/app/api/v1/ai.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/api/v1/upload" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/styles/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/api/v1/dicom.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/api/v1/dicom.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/models/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/services/dicom_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/dicom_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/assets/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/DicomViewer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DicomViewer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.ts" afterDir="false" />
-    </list>
+    <list default="true" id="7fbfae57-25a2-4aae-97cf-8bc4cae55101" name="更改" comment="5.13之前的工作" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744429114373</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="5.13之前的工作">
+      <option name="closed" value="true" />
+      <created>1747106633804</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747106633804</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -152,6 +145,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="4.11之前的工作" />
-    <option name="LAST_COMMIT_MESSAGE" value="4.11之前的工作" />
+    <MESSAGE value="5.13之前的工作" />
+    <option name="LAST_COMMIT_MESSAGE" value="5.13之前的工作" />
   </component>
 </project>
