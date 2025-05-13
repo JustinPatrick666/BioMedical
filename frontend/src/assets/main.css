@@ -1,35 +1,90 @@
-@import './base.css';
+/* 引入思源黑体 */
+@font-face {
+  font-family: 'SourceHanSans'; /* 自定义字体名称 */
+  src: url('/assets/fonts/SourceHanSansSC-Regular.otf') format('opentype'); /* 正常字重 */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SourceHanSans';
+  src: url('/assets/fonts/SourceHanSansSC-Bold.otf') format('opentype'); /* 加粗字重 */
+  font-weight: bold;
+  font-style: normal;
+}
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
-a,
-.green {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--vt-c-primary);
+  color: dark;
+}
+
+.navbar nav a {
+  margin: 0 1rem;
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+  color: dark;
+  font-weight: bold;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.navbar nav a.router-link-active {
+  text-decoration: underline;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 300px; /* 左侧工具栏 | 主内容区 | 右侧信息面板 */
+  gap: 1rem;
+  padding: 1rem;
+  height: calc(100vh - 60px); /* 减去顶部导航栏高度 */
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.sidebar, .main-content, .info-panel {
+  background-color: rgba(255, 255, 255, 0.05); /* 半透明背景 */
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar button {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--vt-c-primary);
+  color: dark;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+  background-color: darken(var(--vt-c-primary), 10%);
+}
+
+.main-content {
+  background-color: black; /* DICOM 查看器区域背景为黑色 */
+  position: relative;
+  height: 800px;
+  min-height:500px;
+  max-height:1000px;
+}
+
+.info-panel h3 {
+  margin: 0;
+  color: var(--vt-c-primary);
+}
+
+.info-panel p {
+  margin: 0.25rem 0;
 }

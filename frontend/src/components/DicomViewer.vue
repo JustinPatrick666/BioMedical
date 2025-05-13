@@ -1,86 +1,65 @@
 <template>
-  <div class="dicom-container">
-    <div ref="viewerElement" class="viewer-element"></div>
-    <div class="toolbar">
-      <el-slider
-        v-model="windowWidth"
-        :min="0"
-        :max="2000"
-        @input="updateViewport"
-      />
-    </div>
+  <div class="dicom-viewer">
+    <div id="dicomImageContainer" ref="dicomImageContainer"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import cornerstone from 'cornerstone-core'
-import * as dicomParser from 'dicom-parser'
+import { onMounted, ref } from 'vue';
+import * as cornerstone from 'cornerstone-core';
+import * as cornerstoneTools from 'cornerstone-tools';
+import * as cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 
-const viewerElement = ref<HTMLElement>()
-const windowWidth = ref(400)
+const dicomImageContainer = ref(null);
 
-const updateViewport = () => {
-  if (!viewerElement.value) return
-  const viewport = cornerstone.getViewport(viewerElement.value)
-  viewport.voi.windowWidth = windowWidth.value
-  cornerstone.setViewport(viewerElement.value, viewport)
-}
+onMounted(() => {
+  // 初始化 Cornerstone 和相关工具
+  cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
+  cornerstoneTools.init();
 
-onMounted(async () => {
-  if (!viewerElement.value) return
+  const element = dicomImageContainer.value;
+  if (element) {
+    cornerstone.enable(element);
 
-  // 启用元素
-  cornerstone.enable(viewerElement.value)
-  console.log('启用元素:', viewerElement.value)
+    // 添加基本工具（如平移和缩放）
+    cornerstoneTools.addTool(cornerstoneTools.PanTool);
+    cornerstoneTools.addTool(cornerstoneTools.ZoomTool);
+    cornerstoneTools.setToolActive('Pan', { mouseButtonMask: 1 }); // 左键平移
+    cornerstoneTools.setToolActive('Zoom', { mouseButtonMask: 2 }); // 右键缩放
+
+    // 加载 DICOM 图像
+    loadDicomImage('/dicom/image-00000.dcm'); // 新的文件路径
+  }
+});
+
+async function loadDicomImage(url: string) {
+  const element = dicomImageContainer.value;
+
+  if (!element) {
+    console.error('DICOM 容器未找到');
+    return;
+  }
 
   try {
-    // 加载图像
-    const image = await cornerstone.loadImage('wadouri:http://localhost:3000/dicom/sample.dcm')
-    console.log('图像加载完成:', image)
-
-    // 显示图像
-    cornerstone.displayImage(viewerElement.value, image)
-    updateViewport()
+    // 加载 DICOM 图像
+    const image = await cornerstone.loadImage(url);
+    cornerstone.displayImage(element, image);
   } catch (error) {
-    console.error('图像加载失败:', error)
-    if (viewerElement.value) {
-      viewerElement.value.innerHTML = `
-        <div style="color:red;padding:20px;text-align:center;">
-          <p>图像加载失败: ${error.message}</p>
-          <button onclick="location.reload()" style="padding:10px;background:#007bff;color:white;border:none;border-radius:5px;cursor:pointer;">
-            重试
-          </button>
-        </div>
-      `
-    }
+    console.error('加载 DICOM 图像失败:', error);
   }
-})
-
-onUnmounted(() => {
-  if (viewerElement.value) {
-    cornerstone.disable(viewerElement.value)
-  }
-})
+}
 </script>
 
 <style scoped>
-.dicom-container {
-  width: 100%;
-  height: 600px;
-  position: relative;
-}
-.viewer-element {
+.dicom-viewer {
   width: 100%;
   height: 100%;
-  background-color: #000; /* 黑色背景便于观察 */
+  position: relative;
 }
-.toolbar {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.5);
+
+#dicomImageContainer {
+  width: 100%;
+  height: 100%;
+  background-color: black; /* DICOM 查看器背景为黑色 */
 }
 </style>

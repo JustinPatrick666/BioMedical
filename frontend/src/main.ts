@@ -1,10 +1,13 @@
 // src/main.ts
 import { createApp } from 'vue'
 import App from './App.vue'
+import './assets/base.css'
+import './assets/main.css'
 import router from './router'
 import * as cornerstone from 'cornerstone-core'
 import * as cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader'
 import * as dicomParser from 'dicom-parser'
+
 import { initCornerstone } from '@/composables/useDicom'
 
 const startApp = async () => {
@@ -22,6 +25,7 @@ const startApp = async () => {
   cornerstoneWADOImageLoader.external.dicomParser = dicomParser
 
   // 初始化 Cornerstone 和工具
+
   await initCornerstone()
 
   // 启动 Vue 应用

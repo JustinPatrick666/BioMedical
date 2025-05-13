@@ -1,8 +1,10 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException, status
+from fastapi import APIRouter, UploadFile, File, HTTPException, status,Depends
 from pathlib import Path
 from app.config import settings
 from app.services.dicom_service import validate_dicom
 from app.models.schemas import UploadResponse
+from app.services.dicom_service import get_dicom_results
+from app.models.schemas import DicomResultsResponse
 
 router = APIRouter(tags=["DICOM操作"])
 
@@ -46,3 +48,10 @@ async def upload_dicom(file: UploadFile = File(...)):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"文件处理错误: {str(e)}"
         )
+
+
+@router.get("/results", response_model=DicomResultsResponse)
+async def dicom_results():
+    """获取所有已上传DICOM文件的处理结果"""
+    results = get_dicom_results(settings.UPLOAD_DIR)
+    return DicomResultsResponse(results=results)
